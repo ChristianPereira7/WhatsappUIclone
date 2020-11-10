@@ -4,6 +4,7 @@ import './App.css';
 import ChatListItem from './components/ChatListItem';
 import ChatIntro from './components/ChatIntro';
 import ChatWindow from './components/ChatWindow';
+import NewChat from './components/NewChat';
 
 import DonutLargeIcon from '@material-ui/icons/DonutLarge';
 import ChatIcon from '@material-ui/icons/Chat';
@@ -22,16 +23,34 @@ export default () => {
     
     const [activeChat, setActiveChat] = useState ({});
 
+    const [ user, setUser ] = useState({ //Constante que identifica o usuário
+        id: 1234,
+        avatar: 'https://www.w3schools.com/howto/img_avatar.png',
+        name: 'Chris'
+    });
+
+    const [showNewChat, setShowNewChat] = useState(false);
+
+    const handleNewChat = () => {
+        setShowNewChat(true);
+    }
+
   return(
     <div className="app-window">
         <div className="sidebar">
+            <NewChat 
+                chatlist={chatlist}
+                user={user}
+                show={showNewChat}
+                setShow={setShowNewChat}
+            />
            <header>
-              <img className="header--avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt=""/>
+              <img className="header--avatar" src={user.avatar} alt=""/> 
               <div className="header--buttons">
                   <div className="header--btn">
                       <DonutLargeIcon style={{color:'#919191'}}/>
                   </div>
-                  <div className="header--btn">
+                  <div onClick={handleNewChat} className="header--btn">
                       <ChatIcon style={{color:'#919191'}}/>
                   </div>
                   <div className="header--btn">
@@ -63,7 +82,9 @@ export default () => {
         <div className="contentarea">
 
                 {activeChat.chatId !== undefined &&
-                    <ChatWindow/>
+                    <ChatWindow
+                        user={user}  //Usuário identificado na tela do Chat
+                    />
                 }
                 {activeChat.chatId === undefined &&
                     <ChatIntro/>

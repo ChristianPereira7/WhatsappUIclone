@@ -16,7 +16,7 @@ export default ({onClick, active, data})=> {
 
                 <div className="chatListItem--line">
                     <div className="chatListItem--lastMsg">
-                        <p>Eaí, blz?aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                        <p>Eaí, blz?</p>
                     </div>
                 </div>
             </div>

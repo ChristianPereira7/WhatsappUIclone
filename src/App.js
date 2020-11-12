@@ -26,7 +26,7 @@ export default () => {
     const [ user, setUser ] = useState({ //Constante que identifica o usuário
         id: 1234,
         avatar: 'https://www.w3schools.com/howto/img_avatar.png',
-        name: 'Chris'
+        name: 'Fulano de Tal'
     });
 
     const [showNewChat, setShowNewChat] = useState(false);
